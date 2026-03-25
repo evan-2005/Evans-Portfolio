@@ -19,7 +19,7 @@ export const Contact = () => {
         
         <motion.a 
           initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
-          href="mailto:evan@example.com"
+          href="mailto:evan.lojenzhen@gmail.com"
           className="inline-block px-10 py-4 border border-primary text-primary font-bold font-mono rounded bg-primary/10 hover:bg-primary hover:text-[#0a0f1e] text-lg transition-all duration-300 shadow-[0_0_15px_rgba(0,212,255,0.3)] hover:shadow-[0_0_30px_rgba(0,212,255,0.8)] focus:outline-none"
         >
           Say Hello

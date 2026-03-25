@@ -6,21 +6,85 @@ export const Experience = () => {
   const experiences = [
     {
       id: 1,
-      type: 'education',
-      title: 'Computer Science, B.S.',
-      org: 'University Name',
-      date: '2023 - 2027',
-      desc: 'Focusing on Software Engineering, Data Structures, and Artificial Intelligence. Participating in competitive programming and hackathons.',
-      icon: <FaGraduationCap />
+      type: 'work',
+      title: 'Lab Apprentice (Advanced Robotics Team)',
+      org: 'Research Centre for Human-Machine Collaboration (HUMAC)',
+      date: 'Feb 2026 - Present',
+      desc: 'Performing 3D modelling and hardware assembly of electronic components for robotic systems. Contributing to the design, development, and evaluation of robotic solutions for research and industry applications.',
+      tags: ['ROS', '3D Modelling', 'Arduino', 'Robotics', 'CAD', 'Hardware', 'Soldering'],
+      icon: <FaBriefcase />
     },
     {
       id: 2,
       type: 'work',
-      title: 'Backend / Full Stack Developer',
-      org: 'Freelance & Open Source',
-      date: '2022 - Present',
-      desc: 'Developing advanced backend systems using Scala, PHP (Laravel), C++, and Python. Maintaining open-source projects on GitHub solving real-world domain problems.',
+      title: 'Admin cum Coach',
+      org: 'Robinuo Learning Hub',
+      date: 'Aug 2025 - Present',
+      desc: 'Coaching children in Robotics and Arduino, simplifying complex engineering concepts. Managing administrative paperwork and streamlining hub operations for a seamless learning environment.',
+      tags: ['Robotics', 'Arduino', 'Communication', 'Working with Children', 'Problem Solving', 'Tech-Savvy'],
       icon: <FaBriefcase />
+    },
+    {
+      id: 3,
+      type: 'work',
+      title: 'Publicity and Marketing Executive',
+      org: 'IMechE Sunway Student Chapter · Contract',
+      date: 'Mar 2025 - Present',
+      desc: 'Contributing to the Publicity and Marketing team, enhancing the chapter\'s visibility and engagement. Designed and executed marketing strategies for events, workshops, and competitions. Ran social media campaigns to boost student involvement and awareness. Collaborated with committees to ensure cohesive branding and communication.',
+      tags: ['Marketing', 'Administration', 'Social Media', 'Event Management', 'Communication'],
+      icon: <FaBriefcase />
+    },
+    {
+      id: 4,
+      type: 'education',
+      title: 'Bachelor of Science (Honours) in Computer Science',
+      org: 'Sunway University & Lancaster University',
+      date: '2025 - 2027',
+      desc: 'Exploring advanced software development, AI, and system architecture.',
+      cgpa: 'CGPA: 3.80',
+      tags: ['Business Analysis', 'OOP', 'Digital Image Processing', 'Algorithm Analysis', 'Scala', 'IoT Networking & Security', 'Startup Foundry'],
+      icon: <FaGraduationCap />
+    },
+    {
+      id: 5,
+      type: 'education',
+      title: 'Diploma in Information Technology',
+      org: 'Sunway College Kuala Lumpur',
+      date: '2023 - 2025',
+      desc: 'Strong foundational skills in IT and software creation.',
+      cgpa: 'CGPA: 3.82 (Distinction)',
+      tags: ['OOP', 'SQL', 'Web Development', 'Java', 'Android Development', 'Database Design', 'Software Development'],
+      icon: <FaGraduationCap />
+    },
+    {
+      id: 6,
+      type: 'work',
+      title: 'Cybersecurity Intern',
+      org: 'LGMS Berhad',
+      date: 'Aug 2024 - Jan 2025',
+      desc: 'Conducted penetration testing using Burp Suite and developed custom scripts to detect backend security flaws. Authored technical reports on risk levels and remediation.',
+      tags: ['Penetration Testing', 'Burp Suite', 'Kali Linux', 'Python', 'Network Security', 'Vulnerability Assessment'],
+      icon: <FaBriefcase />
+    },
+    {
+      id: 7,
+      type: 'work',
+      title: 'Robotics Teacher',
+      org: 'P3 Robotics',
+      date: 'Oct 2023 - May 2025',
+      desc: 'Taught Scratch, Python, and sensor integration to foster hands-on learning. Monitored student progress and prepared teams for robotics challenges.',
+      tags: ['Robotics', 'Python', 'Communication', 'Working with Children', 'Problem Solving', 'Tech-Savvy'],
+      icon: <FaBriefcase />
+    },
+    {
+      id: 8,
+      type: 'education',
+      title: 'Sijil Pelajaran Malaysia (SPM)',
+      org: 'SMK USJ 12',
+      date: '2018 - 2023',
+      desc: 'Served as House Captain and Class Monitor. Top scorer in French DELF (A1/A2). Active in school committees and leadership activities.',
+      tags: ['Leadership', 'French (DELF A1/A2)', 'Public Speaking', 'Team Management', 'Problem Solving'],
+      icon: <FaGraduationCap />
     }
   ];
 
@@ -41,7 +105,7 @@ export const Experience = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: idx * 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="relative pl-8 md:pl-12"
             >
               <div className="absolute -left-[17px] top-1 h-8 w-8 rounded-full bg-[#0a0f1e] border-2 border-primary flex items-center justify-center text-primary z-10 shadow-[0_0_10px_rgba(0,212,255,0.5)]">
@@ -53,10 +117,22 @@ export const Experience = () => {
                 
                 <span className="text-primary font-mono text-sm mb-2 block">{exp.date}</span>
                 <h3 className="text-xl font-bold text-textPrimary">{exp.title}</h3>
-                <h4 className="text-lg text-slate-400 mb-4">{exp.org}</h4>
-                <p className="text-textMuted leading-relaxed">
+                <h4 className="text-lg text-slate-400 mb-1">{exp.org}</h4>
+                {exp.cgpa && (
+                  <p className="text-primary/80 font-mono text-sm mb-3">{exp.cgpa}</p>
+                )}
+                <p className="text-textMuted leading-relaxed mb-4">
                   {exp.desc}
                 </p>
+                {exp.tags && (
+                  <div className="flex flex-wrap gap-2">
+                    {exp.tags.map(tag => (
+                      <span key={tag} className="bg-primary/10 text-primary border border-primary/20 text-xs px-2.5 py-1 rounded-md">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

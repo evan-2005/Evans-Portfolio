@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { FaSearch } from 'react-icons/fa';
 
-export const Navbar = () => {
+interface NavbarProps {
+  onSearchOpen: () => void;
+}
+
+export const Navbar = ({ onSearchOpen }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -12,7 +17,7 @@ export const Navbar = () => {
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md py-4 shadow-md' : 'py-6 bg-transparent'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold font-heading text-primary">Evan<span className="text-textPrimary">.dev</span></h1>
+        <a href="#hero" className="text-2xl font-bold font-heading text-primary hover:opacity-80 transition-opacity">Evan<span className="text-textPrimary">.dev</span></a>
         
         <nav className="hidden md:flex gap-8 items-center text-sm font-medium">
           <a href="#hero" className="text-textMuted hover:text-primary transition-colors">Home</a>
@@ -22,7 +27,12 @@ export const Navbar = () => {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <button className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-surface border border-slate-700 text-xs text-textMuted hover:border-primary transition-colors">
+          <button 
+            id="search-button"
+            onClick={onSearchOpen}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-surface border border-slate-700 text-xs text-textMuted hover:border-primary hover:text-primary transition-colors"
+          >
+            <FaSearch className="text-[10px]" />
             <span className="text-slate-400">Search</span>
             <kbd className="bg-background px-1.5 py-0.5 rounded text-[10px] font-mono border border-slate-700">Ctrl K</kbd>
           </button>

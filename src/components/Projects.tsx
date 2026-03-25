@@ -18,16 +18,31 @@ export const Projects = () => {
   const [projects, setProjects] = useState<Repo[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('All');
-  const filters = ['All', 'Web', 'ML/AI', 'Systems', 'Algorithms', 'Other'];
+  const filters = ['All', 'Web', 'ML/AI', 'Mobile App', 'Systems', 'Algorithms', 'Other'];
+
+  // Multi-category overrides: key = normalised substring to match, value = array of categories
+  // Repo name normalised = lowercase, all [-_ ] stripped
+  const multiOverrides: Array<{ match: string; cats: string[] }> = [
+    // Web
+    { match: 'travelicks', cats: ['Web'] },
+    { match: 'jobhub',     cats: ['Web'] },
+    // ML/AI + Mobile App
+    { match: 'punca',      cats: ['ML/AI', 'Mobile App'] },
+    // ML/AI
+    { match: 'gemma',      cats: ['ML/AI'] },
+    // Algorithms
+    { match: 'mergesort',  cats: ['Algorithms'] },
+    { match: 'huffmancoding', cats: ['Algorithms'] },
+    // Other / Portfolio
+    { match: 'portfolio',  cats: ['Other'] },
+  ];
 
   useEffect(() => {
-    fetch('https://api.github.com/users/evan-2005/repos')
+    fetch('https://api.github.com/users/evan-2005/repos?per_page=100')
       .then(res => res.json())
       .then((data: any) => {
         if (Array.isArray(data)) {
-          // Exclude forks, sort by last updated
           const sorted = data
-            .filter((repo: any) => !repo.fork)
             .sort((a: any, b: any) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
             .map((repo: any) => ({
               id: repo.id,
@@ -50,22 +65,32 @@ export const Projects = () => {
       });
   }, []);
 
-  const getCategory = (repo: Repo) => {
+  const getCategories = (repo: Repo): string[] => {
+    const key = repo.name.toLowerCase().replace(/[-_\s]/g, '');
+
+    // Check substring overrides (first match wins, but we check all for multi-cat)
+    for (const override of multiOverrides) {
+      if (key.includes(override.match)) return override.cats;
+    }
+
+    // Auto-detect fallback
     const lang = repo.language?.toLowerCase() || '';
     const topics = repo.topics?.map(t => t.toLowerCase()) || [];
-    
-    if (lang.includes('typescript') || lang.includes('javascript') || lang.includes('html') || lang.includes('css') || topics.includes('web') || topics.includes('react')) return 'Web';
-    if (lang.includes('python') || lang.includes('jupyter') || topics.includes('ai') || topics.includes('ml')) return 'ML/AI';
-    if (lang.includes('c') || lang.includes('rust') || lang.includes('go') || lang.includes('java')) return 'Systems';
-    if (topics.includes('algorithm') || topics.includes('data-structure')) return 'Algorithms';
-    
-    return 'Other';
+
+    if (lang.includes('typescript') || lang.includes('javascript') || lang.includes('html') || lang.includes('css') || topics.includes('web') || topics.includes('react')) return ['Web'];
+    if (lang.includes('python') || lang.includes('jupyter') || topics.includes('ai') || topics.includes('ml') || topics.includes('chatbot')) return ['ML/AI'];
+    if (topics.includes('algorithm') || topics.includes('data-structure') || topics.includes('algorithms')) return ['Algorithms'];
+    if (lang.includes('java') || lang.includes('kotlin') || lang.includes('swift') || topics.includes('android') || topics.includes('mobile')) return ['Mobile App'];
+    if (lang.includes('c') || lang.includes('rust') || lang.includes('go')) return ['Systems'];
+
+    return ['Other'];
   };
 
   const filteredProjects = projects.filter(p => {
     if (filter === 'All') return true;
-    return getCategory(p) === filter;
+    return getCategories(p).includes(filter);
   });
+
 
   return (
     <section id="projects" className="py-24 bg-background relative overflow-hidden">

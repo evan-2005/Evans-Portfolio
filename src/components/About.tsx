@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 export const About = () => {
   const skills = [
-    { name: 'Python', level: 90 },
-    { name: 'Java', level: 85 },
-    { name: 'C++', level: 80 },
-    { name: 'React', level: 75 },
-    { name: 'Scala', level: 70 },
-    { name: 'PHP / Laravel', level: 80 },
+    { name: 'HTML / CSS / Web', level: 95 },
+    { name: 'Python', level: 85 },
+    { name: 'C++ / Java', level: 75 },
+    { name: 'Penetration Testing (Burp Suite)', level: 80 },
+    { name: 'Arduino / ROS / Robotics', level: 80 },
+    { name: 'SQL / Database Design', level: 75 },
   ];
 
   return (
@@ -38,10 +38,10 @@ export const About = () => {
             initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             className="w-full md:w-3/5">
             <p className="text-textMuted mb-6 leading-relaxed">
-              Hello! My name is Evan and I enjoy creating things that live on the internet. As a Computer Science student, my interest in programming started back when I decided to try editing simple scripts—turns out hacking together custom features taught me a lot about logic and data structures!
+              Hello! My name is Evan and I'm an Aspiring Tech Professional and Educator with a strong background in Robotics, Cybersecurity, and Software Development. I have proven my leadership through student committees and athletics, and I remain deeply dedicated to community service and continuous technical innovation.
             </p>
             <p className="text-textMuted mb-8 leading-relaxed">
-              Fast-forward to today, and I've had the privilege of building diverse software spanning algorithms, AI chatbots, bakery management systems, and even IoT smart irrigation. My main focus these days is building accessible, inclusive products and digital experiences for a variety of clients.
+              Fast-forward to today, and I've had the privilege of serving as a Lab Apprentice at HUMAC performing 3D modelling and hardware assembly, as a Cybersecurity Intern at LGMS Berhad conducting penetration testing, and as a Robotics Teacher fostering hands-on learning. My main focus these days is bridging the gap between hardware engineering and intelligent software to build resilient systems.
             </p>
 
             <h3 className="text-xl font-heading text-textPrimary mb-4">Core Technologies</h3>
