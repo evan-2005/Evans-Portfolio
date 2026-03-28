@@ -79,7 +79,7 @@ export const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-textMuted mb-12 max-w-lg font-medium tracking-tight">
-              <span className="text-accent font-black">Robotics Teacher</span> and Researcher.
+              <span className="text-accent font-black">Robotics </span>Teacher and Researcher.
               <br />
               <span className="text-sm font-normal opacity-60 mt-2 block">Building the future through intelligent software and resilient hardware.</span>
             </p>
@@ -109,7 +109,7 @@ export const Hero = () => {
           <div className="absolute inset-0 flex items-center justify-center p-12">
             <PingPong />
           </div>
-          
+
           {/* Subtle Decorative Elements for the Game Area */}
           <div className="absolute -top-10 -right-10 w-32 h-32 bg-accent/5 rounded-full blur-3xl animate-pulse" />
           <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-primary/5 rounded-full blur-3xl animate-delayed-pulse" />
