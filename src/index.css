@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,18 +8,27 @@
   html {
     scroll-behavior: smooth;
   }
+  
   body {
-    @apply font-body bg-background text-textPrimary antialiased overflow-x-hidden;
-    /* Basic text selection styling */
-    ::selection {
-      @apply bg-primary/30 text-white;
-    }
+    @apply font-sans bg-background text-textPrimary antialiased overflow-x-hidden relative;
   }
+
+  ::selection {
+    @apply bg-accent/20 text-textPrimary;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading tracking-tight;
+    @apply font-heading text-textPrimary tracking-tight;
   }
-  code, pre {
-    @apply font-mono;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 

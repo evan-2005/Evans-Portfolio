@@ -15,29 +15,35 @@ export const Navbar = ({ onSearchOpen }: NavbarProps) => {
   }, []);
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md py-4 shadow-md' : 'py-6 bg-transparent'}`}>
+    <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/80 backdrop-blur-md py-4 border-b border-black/5' : 'py-8 bg-transparent'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#hero" className="text-2xl font-bold font-heading text-primary hover:opacity-80 transition-opacity">Evan<span className="text-textPrimary">.dev</span></a>
+        <div className="flex items-center gap-8">
+          <a href="#hero" className="text-xl font-black text-primary tracking-tighter">Evan Lo</a>
+          
+          <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-accent/10 rounded-full border border-accent/20">
+            <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="text-[10px] font-bold text-accent uppercase tracking-widest whitespace-nowrap">Available for work</span>
+          </div>
+        </div>
         
-        <nav className="hidden md:flex gap-8 items-center text-sm font-medium">
-          <a href="#hero" className="text-textMuted hover:text-primary transition-colors">Home</a>
-          <a href="#about" className="text-textMuted hover:text-primary transition-colors">About</a>
-          <a href="#projects" className="text-textMuted hover:text-primary transition-colors">Projects</a>
-          <a href="#experience" className="text-textMuted hover:text-primary transition-colors">Experience</a>
+        <nav className="hidden md:flex gap-10 items-center text-[11px] font-bold tracking-widest uppercase text-textMuted">
+          <a href="#hero" className="hover:text-primary transition-colors">Home</a>
+          <a href="#about" className="hover:text-primary transition-colors">About</a>
+          <a href="#projects" className="hover:text-primary transition-colors">Projects</a>
+          <a href="#experience" className="hover:text-primary transition-colors">Experience</a>
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-6">
           <button 
             id="search-button"
             onClick={onSearchOpen}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-surface border border-slate-700 text-xs text-textMuted hover:border-primary hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-textMuted hover:text-primary transition-colors"
           >
             <FaSearch className="text-[10px]" />
-            <span className="text-slate-400">Search</span>
-            <kbd className="bg-background px-1.5 py-0.5 rounded text-[10px] font-mono border border-slate-700">Ctrl K</kbd>
+            <span className="text-[11px] font-bold tracking-widest uppercase">Search</span>
           </button>
-          <a href="#contact" className="px-5 py-2 rounded-md bg-primary/10 border border-primary text-primary hover:bg-primary hover:text-background transition-colors font-medium text-sm">
-            Let's Connect
+          <a href="#contact" className="px-6 py-2.5 rounded-full bg-primary text-white text-[11px] font-bold tracking-widest uppercase hover:bg-accent transition-all duration-300">
+            Let's Talk
           </a>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Command } from 'cmdk';
-import { FaHome, FaUser, FaCode, FaBriefcase, FaEnvelope, FaGithub, FaLinkedin, FaDownload } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaHome, FaUser, FaCode, FaBriefcase, FaEnvelope, FaGithub, FaLinkedin, FaDownload, FaSearch } from 'react-icons/fa';
 
 interface CommandPaletteProps {
   open: boolean;
@@ -37,61 +38,62 @@ export const CommandPalette = ({ open, setOpen }: CommandPaletteProps) => {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-sm flex items-start justify-center pt-[20vh]" onClick={() => setOpen(false)}>
-      <div className="w-full max-w-lg bg-surface border border-slate-700 rounded-xl overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
-        <Command className="w-full">
-          <div className="flex items-center border-b border-slate-700 px-3">
-            <span className="text-primary mr-2 font-mono ml-2">›</span>
+    <div className="fixed inset-0 z-[100] bg-white/40 backdrop-blur-md flex items-start justify-center pt-[15vh]" onClick={() => setOpen(false)}>
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95, y: -20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        className="w-full max-w-lg bg-white border border-black/5 rounded-[32px] overflow-hidden shadow-[0_80px_160px_-40px_rgba(0,0,0,0.1)]" 
+        onClick={e => e.stopPropagation()}
+      >
+        <Command className="w-full font-sans">
+          <div className="flex items-center border-b border-black/5 px-6 py-4">
+            <FaSearch className="text-textMuted/40 mr-4 text-sm" />
             <Command.Input 
               autoFocus 
-              placeholder="Type a command or search..." 
-              className="w-full bg-transparent p-4 outline-none text-textPrimary placeholder:text-slate-500 font-mono text-sm" 
+              placeholder="Search everything..." 
+              className="w-full bg-transparent py-4 outline-none text-primary placeholder:text-textMuted/40 text-sm font-bold tracking-tight" 
             />
-            <kbd className="hidden sm:inline-block bg-background px-1.5 py-0.5 rounded text-[10px] font-mono border border-slate-700 text-slate-400 mr-2">ESC</kbd>
+            <kbd className="hidden sm:inline-block px-2 py-1 bg-surface rounded-md text-[9px] font-black text-textMuted border border-black/5 shadow-sm">ESC</kbd>
           </div>
 
-          <Command.List className="max-h-[300px] overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-slate-700">
-            <Command.Empty className="p-4 text-center text-sm text-slate-500 py-6 font-mono">No results found.</Command.Empty>
+          <Command.List className="max-h-[450px] overflow-y-auto p-4 no-scrollbar">
+            <Command.Empty className="p-12 text-center text-[10px] font-black tracking-widest uppercase text-textMuted/30 italic">No matches found.</Command.Empty>
 
-            <Command.Group heading="Navigation" className="text-xs text-slate-500 font-medium px-2 py-1 [&_[cmdk-group-heading]]:mb-2 uppercase tracking-wider mt-2">
-              <Command.Item onSelect={() => navigateTo('#hero')} className="flex items-center gap-3 px-3 py-2 text-sm text-textPrimary rounded-md cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors mb-1 aria-selected:bg-primary/20 aria-selected:text-primary">
-                <FaHome /> Home
+            <Command.Group heading="Navigation" className="text-[10px] text-textMuted/40 font-black px-4 py-3 uppercase tracking-widest mb-2">
+              <Command.Item onSelect={() => navigateTo('#hero')} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
+                <div className="w-8 h-8 rounded-xl bg-surface flex items-center justify-center text-textMuted group-hover:bg-primary group-hover:text-white transition-all"><FaHome /></div> Home
               </Command.Item>
-              <Command.Item onSelect={() => navigateTo('#about')} className="flex items-center gap-3 px-3 py-2 text-sm text-textPrimary rounded-md cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors mb-1 aria-selected:bg-primary/20 aria-selected:text-primary">
-                <FaUser /> About Me
+              <Command.Item onSelect={() => navigateTo('#about')} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
+                <div className="w-8 h-8 rounded-xl bg-surface flex items-center justify-center text-textMuted group-hover:bg-primary group-hover:text-white transition-all"><FaUser /></div> The Brief
               </Command.Item>
-              <Command.Item onSelect={() => navigateTo('#projects')} className="flex items-center gap-3 px-3 py-2 text-sm text-textPrimary rounded-md cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors mb-1 aria-selected:bg-primary/20 aria-selected:text-primary">
-                <FaCode /> Projects
+              <Command.Item onSelect={() => navigateTo('#projects')} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
+                <div className="w-8 h-8 rounded-xl bg-surface flex items-center justify-center text-textMuted group-hover:bg-accent group-hover:text-white transition-all"><FaCode /></div> Project Archive
               </Command.Item>
-              <Command.Item onSelect={() => navigateTo('#experience')} className="flex items-center gap-3 px-3 py-2 text-sm text-textPrimary rounded-md cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors mb-1 aria-selected:bg-primary/20 aria-selected:text-primary">
-                <FaBriefcase /> Experience
+              <Command.Item onSelect={() => navigateTo('#experience')} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
+                <div className="w-8 h-8 rounded-xl bg-surface flex items-center justify-center text-textMuted group-hover:bg-primary group-hover:text-white transition-all"><FaBriefcase /></div> Experience
               </Command.Item>
-              <Command.Item onSelect={() => navigateTo('#contact')} className="flex items-center gap-3 px-3 py-2 text-sm text-textPrimary rounded-md cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors mb-1 aria-selected:bg-primary/20 aria-selected:text-primary">
-                <FaEnvelope /> Contact
+              <Command.Item onSelect={() => navigateTo('#contact')} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
+                <div className="w-8 h-8 rounded-xl bg-surface flex items-center justify-center text-textMuted group-hover:bg-accent group-hover:text-white transition-all"><FaEnvelope /></div> Get in touch
               </Command.Item>
             </Command.Group>
 
-            <Command.Separator className="h-px bg-slate-700 my-2" />
-
-            <Command.Group heading="Actions" className="text-xs text-slate-500 font-medium px-2 py-1 [&_[cmdk-group-heading]]:mb-2 uppercase tracking-wider">
-              <Command.Item onSelect={() => { setOpen(false); window.open('/resume.docx'); }} className="flex items-center gap-3 px-3 py-2 text-sm text-textPrimary rounded-md cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors mb-1 aria-selected:bg-primary/20 aria-selected:text-primary">
-                <FaDownload /> Download Resume
+            <Command.Group heading="Resources" className="text-[10px] text-textMuted/40 font-black px-4 py-3 uppercase tracking-widest mb-2 mt-4">
+              <Command.Item onSelect={() => { setOpen(false); window.open('/resume.pdf'); }} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
+                <div className="w-8 h-8 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all"><FaDownload /></div> Download CV
               </Command.Item>
             </Command.Group>
 
-            <Command.Separator className="h-px bg-slate-700 my-2" />
-
-            <Command.Group heading="Social" className="text-xs text-slate-500 font-medium px-2 py-1 [&_[cmdk-group-heading]]:mb-2 uppercase tracking-wider">
-              <Command.Item onSelect={() => openLink('https://github.com/evan-2005')} className="flex items-center gap-3 px-3 py-2 text-sm text-textPrimary rounded-md cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors mb-1 aria-selected:bg-primary/20 aria-selected:text-primary">
-                <FaGithub /> GitHub
+            <Command.Group heading="Socials" className="text-[10px] text-textMuted/40 font-black px-4 py-3 uppercase tracking-widest mb-2 mt-4">
+              <Command.Item onSelect={() => openLink('https://github.com/evan-2005')} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
+                <div className="w-8 h-8 rounded-xl bg-surface flex items-center justify-center text-textMuted group-hover:bg-primary group-hover:text-white transition-all"><FaGithub /></div> GitHub Profile
               </Command.Item>
-              <Command.Item onSelect={() => openLink('https://www.linkedin.com/in/evan-lo-jen-zhen')} className="flex items-center gap-3 px-3 py-2 text-sm text-textPrimary rounded-md cursor-pointer hover:bg-primary/20 hover:text-primary transition-colors mb-1 aria-selected:bg-primary/20 aria-selected:text-primary">
-                <FaLinkedin /> LinkedIn
+              <Command.Item onSelect={() => openLink('https://www.linkedin.com/in/evan-lo-jen-zhen')} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
+                <div className="w-8 h-8 rounded-xl bg-surface flex items-center justify-center text-textMuted group-hover:bg-primary group-hover:text-white transition-all"><FaLinkedin /></div> LinkedIn Profile
               </Command.Item>
             </Command.Group>
           </Command.List>
         </Command>
-      </div>
+      </motion.div>
     </div>
   );
 };

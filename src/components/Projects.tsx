@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaFolder } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaFolder, FaCode } from 'react-icons/fa';
 
 interface Repo {
   id: number;
@@ -93,92 +93,111 @@ export const Projects = () => {
 
 
   return (
-    <section id="projects" className="py-24 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }}
-          className="flex items-center gap-4 mb-12">
-           <div className="h-[1px] bg-slate-700 flex-1 mr-4 hidden sm:block"></div>
-          <h2 className="text-3xl md:text-5xl font-bold font-heading text-textPrimary">Some Things I've <span className="text-primary">Built</span></h2>
-          <div className="h-[1px] bg-slate-700 flex-1 ml-4 sm:hidden"></div>
-        </motion.div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="flex flex-wrap justify-center sm:justify-start gap-4 mb-12">
-          {filters.map(f => (
-            <button 
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`px-5 py-2 rounded-full text-sm font-mono transition-all duration-300 border ${filter === f ? 'bg-primary/20 border-primary text-primary shadow-[0_0_15px_rgba(0,212,255,0.2)]' : 'bg-surface border-slate-700 text-textMuted hover:border-textPrimary hover:text-textPrimary'}`}
-            >
-              {f}
-            </button>
-          ))}
-        </motion.div>
+    <section id="projects" className="py-32 bg-surface/30">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="max-w-xl">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-6 block">Selected Works</span>
+            <h2 className="text-5xl md:text-6xl font-black text-primary leading-tight tracking-tight">
+              A collection of <br />
+              <span className="text-accent italic">curated</span> projects.
+            </h2>
+          </div>
+          
+          <div className="flex flex-wrap gap-6 text-[10px] font-black uppercase tracking-widest text-textMuted overflow-x-auto pb-4 no-scrollbar">
+            {filters.map(f => (
+              <button 
+                key={f}
+                onClick={() => setFilter(f)}
+                className={`transition-all duration-300 whitespace-nowrap ${filter === f ? 'text-accent border-b-2 border-accent pb-1' : 'hover:text-primary transition-colors'}`}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+        </div>
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map(i => (
-              <div key={i} className="h-[320px] bg-surface rounded-xl animate-pulse border border-slate-800"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[1, 2, 3, 4].map(i => (
+              <div key={i} className="aspect-[4/3] bg-white/50 animate-pulse rounded-[40px] border border-black/5"></div>
             ))}
           </div>
         ) : (
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence>
-              {filteredProjects.map((project) => (
-                <motion.div 
-                  layout
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <AnimatePresence mode="wait">
+              {filteredProjects.map((project, idx) => (
+                <motion.a
                   key={project.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3 }}
-                  className="group block relative"
+                  href={project.html_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.6, delay: idx * 0.05 }}
+                  className="group bg-white rounded-[40px] p-10 border border-black/5 hover:border-accent/10 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] transition-all duration-700 overflow-hidden relative flex flex-col h-full cursor-pointer"
                 >
-                  <div className="h-full relative overflow-hidden bg-surface border border-slate-800 rounded-xl p-8 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_10px_30px_-15px_rgba(0,212,255,0.3)] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70">
-                    <div className="flex justify-between items-center mb-8">
-                      <div className="text-4xl text-primary"><FaFolder /></div>
+                  <div className="flex justify-between items-start mb-12">
+                    <div className="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center text-2xl text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                      <FaCode />
+                    </div>
+                    {project.homepage && (
                       <div className="flex gap-4">
-                        {project.homepage && (
-                          <a href={project.homepage} target="_blank" rel="noreferrer" className="text-textMuted hover:text-primary transition-colors text-xl z-10">
-                            <FaExternalLinkAlt />
-                          </a>
-                        )}
-                        <a href={project.html_url} target="_blank" rel="noreferrer" className="text-textMuted hover:text-primary transition-colors text-xl z-10">
-                          <FaGithub />
+                        <a 
+                          href={project.homepage} 
+                          target="_blank" 
+                          rel="noreferrer" 
+                          onClick={(e) => e.stopPropagation()}
+                          className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center text-textMuted hover:bg-accent hover:text-white transition-all"
+                        >
+                          <FaExternalLinkAlt className="text-sm" />
                         </a>
                       </div>
-                    </div>
-
-                    <h3 className="text-xl font-bold font-heading text-textPrimary mb-3 group-hover:text-primary transition-colors relative z-10">
-                      <a href={project.html_url} target="_blank" rel="noreferrer" className="before:absolute before:inset-0">
-                        {project.name.replace(/-/g, ' ')}
-                      </a>
-                    </h3>
-                    
-                    <p className="text-textMuted text-sm font-body mb-8 flex-grow leading-relaxed relative z-10">
-                      {project.description || 'A cool project I built to solve a problem and learn new technologies.'}
-                    </p>
-
-                    <div className="flex flex-wrap gap-x-3 gap-y-2 mt-auto font-mono text-xs text-slate-400 relative z-10">
-                      {project.language && <span className="text-primary/90">{project.language}</span>}
-                      {project.topics.slice(0, 3).map((topic: string) => (
-                        <span key={topic}>{topic}</span>
-                      ))}
-                    </div>
+                    )}
                   </div>
-                </motion.div>
+
+                  <h3 className="text-3xl font-black text-primary mb-4 group-hover:text-accent transition-colors">
+                    {project.name.replace(/-/g, ' ')}
+                  </h3>
+                  <p className="text-textMuted font-medium leading-relaxed mb-6 line-clamp-2 uppercase text-[11px] tracking-widest opacity-60">
+                    {project.description || 'A unique technical solution developed to bridge complex systems and intelligent software.'}
+                  </p>
+
+                  <div className="flex items-center gap-2 mb-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-accent">View on GitHub</span>
+                    <div className="w-8 h-[1px] bg-accent/30" />
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 pt-8 border-t border-black/[0.03] mt-auto">
+                    {project.language && (
+                      <span className="text-[9px] font-black uppercase text-accent tracking-widest px-4 py-2 bg-accent/5 rounded-full group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                        {project.language}
+                      </span>
+                    )}
+                    {project.topics.slice(0, 3).map(tag => (
+                      <span key={tag} className="text-[9px] font-black uppercase text-textMuted tracking-widest px-4 py-2 bg-surface rounded-full group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </motion.a>
               ))}
             </AnimatePresence>
-            
-            {filteredProjects.length === 0 && (
-              <div className="col-span-full py-20 text-center text-textMuted font-mono text-sm border border-slate-800 rounded-xl bg-surface/50">
-                No projects found in the '{filter}' category.
-              </div>
-            )}
-          </motion.div>
+          </div>
         )}
+
+        {filteredProjects.length === 0 && !loading && (
+          <div className="py-32 text-center text-textMuted font-bold text-xs tracking-widest uppercase opacity-40">
+            No projects archived in '{filter}'
+          </div>
+        )}
+
+        <div className="mt-20 text-center">
+          <a href="https://github.com/evan-2005" target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 px-12 py-6 rounded-full border border-black/5 font-black text-[11px] uppercase tracking-[0.2em] text-primary hover:bg-primary hover:text-white transition-all translate-y-0 hover:-translate-y-1 shadow-sm hover:shadow-xl">
+            Explore more on GitHub <FaGithub className="text-lg" />
+          </a>
+        </div>
       </div>
     </section>
   );

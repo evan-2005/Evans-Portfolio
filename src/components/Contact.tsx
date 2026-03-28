@@ -1,36 +1,48 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-2xl text-center relative z-10">
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-          className="text-primary font-mono mb-4 text-sm">What's Next?</motion.p>
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-          className="text-4xl md:text-5xl font-bold font-heading text-textPrimary mb-6">Get In Touch</motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-          className="text-textMuted text-lg mb-12 leading-relaxed">
-          I'm currently looking for new opportunities and my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-        </motion.p>
-        
-        <motion.a 
-          initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
-          href="mailto:evan.lojenzhen@gmail.com"
-          className="inline-block px-10 py-4 border border-primary text-primary font-bold font-mono rounded bg-primary/10 hover:bg-primary hover:text-[#0a0f1e] text-lg transition-all duration-300 shadow-[0_0_15px_rgba(0,212,255,0.3)] hover:shadow-[0_0_30px_rgba(0,212,255,0.8)] focus:outline-none"
+    <section id="contact" className="py-32 bg-white">
+      <div className="container mx-auto px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto"
         >
-          Say Hello
-        </motion.a>
-      </div>
+          <span className="text-[11px] font-black uppercase tracking-[0.4em] text-accent mb-12 block">Ready to start?</span>
+          
+          <h2 className="text-5xl md:text-8xl font-black text-primary mb-16 tracking-tight leading-[1.1]">
+            Let's connect <br />
+            and <span className="text-accent underline decoration-accent/20 underline-offset-[12px]">build.</span>
+          </h2>
 
-      <footer className="absolute bottom-0 w-full py-6 text-center z-10">
-        <a href="https://github.com/evan-2005" target="_blank" rel="noreferrer" className="text-slate-500 font-mono text-sm hover:text-primary transition-colors">
-          Designed & Built by Evan © {new Date().getFullYear()}
-        </a>
-      </footer>
+          <a 
+            href="mailto:evan.lojenzhen@gmail.com" 
+            className="text-2xl md:text-5xl font-black text-primary hover:text-accent transition-all duration-500 break-words mb-24 block"
+          >
+            evan.lojenzhen@gmail.com
+          </a>
+
+          <div className="flex flex-col md:flex-row justify-between items-center gap-12 pt-24 border-t border-black/5">
+            <div className="flex gap-10 text-xl text-textMuted">
+              <a href="https://github.com/evan-2005" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
+                <FaGithub /> <span className="text-[10px] font-black uppercase tracking-widest">GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/evan-lo-jen-zhen" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
+                <FaLinkedin /> <span className="text-[10px] font-black uppercase tracking-widest">LinkedIn</span>
+              </a>
+            </div>
+
+            <p className="text-[10px] font-bold text-textMuted uppercase tracking-[0.3em]">
+              {new Date().getFullYear()} — EVAN LO • MADE WITH PRECISION
+            </p>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };

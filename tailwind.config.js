@@ -8,17 +8,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0a0f1e',
-        surface: '#111827',
-        primary: '#00d4ff',
-        secondary: '#7c3aed',
-        textPrimary: '#f1f5f9',
-        textMuted: '#94a3b8',
+        background: '#FFFFFF',
+        surface: '#F5F5F3',
+        primary: '#111111',
+        accent: '#3ABFB0',
+        textPrimary: '#111111',
+        textMuted: '#888888',
       },
       fontFamily: {
-        heading: ['Space Grotesk', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Inter', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
       }
     },
   },
