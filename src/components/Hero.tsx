@@ -79,7 +79,7 @@ export const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-textMuted mb-12 max-w-lg font-medium tracking-tight">
-              <span className="text-accent font-black">Robotics </span>Teacher and Researcher.
+              <span className="text-accent font-black">Robotics </span>Teacher and Researcherm, <span className="text-accent font-black">Cybersecurity </span>Enthusiast.
               <br />
               <span className="text-sm font-normal opacity-60 mt-2 block">Building the future through intelligent software and resilient hardware.</span>
             </p>
