@@ -79,12 +79,11 @@ export const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-textMuted mb-12 max-w-lg font-medium tracking-tight">
-              <span className="text-accent font-black">Robotics </span>Researcher & Teacher,{" "}
-              <span className="text-accent font-black">Cybersecurity </span>Practitioner.
+              <span className="text-accent font-black">Robotics </span>Teacher and Researcher .
               <br />
-              <span className="text-sm font-normal opacity-60 mt-2 block">
-                Lab researcher, penetration tester, hackathon enthusiast, and educator  </span>
+              <span className="text-sm font-normal opacity-60 mt-2 block">Building the future through intelligent software and resilient hardware.</span>
             </p>
+
             <div className="flex flex-wrap gap-6 items-center">
               <a href="#contact" className="px-10 py-5 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all duration-500 shadow-xl shadow-primary/10 hover:shadow-accent/20 hover:-translate-y-1">
                 Let's connect
