@@ -171,10 +171,10 @@ export const PingPong = () => {
           ) : (
             <>
               <h3 className="text-4xl font-black text-primary mb-2">
-                {gameState === 'idle' ? 'Retro Ping Pong' : 'Game Paused'}
+                {gameState === 'idle' ? 'Ping Pong' : 'Game Paused'}
               </h3>
               <p className="text-[10px] uppercase font-black tracking-widest text-textMuted mb-8 opacity-60">
-                {gameState === 'idle' ? 'Hand-eye coordination test' : 'Hover back to resume'}
+                {gameState === 'idle' ? 'Try This' : 'Hover back to resume'}
               </p>
               <div className="flex gap-4">
                 <button
