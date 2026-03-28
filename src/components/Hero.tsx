@@ -83,40 +83,21 @@ export const Hero = () => {
               <span className="text-accent font-black">Cybersecurity </span>Practitioner.
               <br />
               <span className="text-sm font-normal opacity-60 mt-2 block">
-                Building intelligent systems by day, securing them by night — and teaching the next generation in between.
-              </span>
+                Lab researcher, penetration tester, hackathon enthusiast, and educator  </span>
             </p>
-
             <div className="flex flex-wrap gap-6 items-center">
-              <a
-                href="#contact"
-                className="px-10 py-5 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all duration-500 shadow-xl shadow-primary/10 hover:shadow-accent/20 hover:-translate-y-1"
-              >
+              <a href="#contact" className="px-10 py-5 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all duration-500 shadow-xl shadow-primary/10 hover:shadow-accent/20 hover:-translate-y-1">
                 Let's connect
               </a>
               <div className="flex items-center gap-6 ml-2">
-                <a
-                  href="/resume.pdf"
-                  download
-                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-textMuted hover:text-primary transition-colors"
-                >
+                <a href="/resume.pdf" download className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-textMuted hover:text-primary transition-colors">
                   <FaDownload className="text-[10px]" /> Resume
                 </a>
                 <div className="w-px h-4 bg-black/10" />
-                <a
-                  href="https://github.com/evan-2005"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-lg text-textMuted hover:text-primary transition-colors"
-                >
+                <a href="https://github.com/evan-2005" target="_blank" rel="noreferrer" className="text-lg text-textMuted hover:text-primary transition-colors">
                   <FaGithub />
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/evan-lo-jen-zhen"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-lg text-textMuted hover:text-primary transition-colors"
-                >
+                <a href="https://www.linkedin.com/in/evan-lo-jen-zhen" target="_blank" rel="noreferrer" className="text-lg text-textMuted hover:text-primary transition-colors">
                   <FaLinkedin />
                 </a>
               </div>
