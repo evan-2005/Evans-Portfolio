@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -11,17 +12,19 @@ function App() {
   const [paletteOpen, setPaletteOpen] = useState(false);
 
   return (
-    <div className="bg-background min-h-screen text-textPrimary font-body selection:bg-primary/30 selection:text-white relative">
-      <CommandPalette open={paletteOpen} setOpen={setPaletteOpen} />
-      <Navbar onSearchOpen={() => setPaletteOpen(true)} />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Experience />
-        <Contact />
-      </main>
-    </div>
+    <ThemeProvider>
+      <div className="bg-background dark:bg-background-dark min-h-screen text-textPrimary dark:text-textPrimary-dark font-body selection:bg-primary/30 dark:selection:bg-accent/30 selection:text-white relative">
+        <CommandPalette open={paletteOpen} setOpen={setPaletteOpen} />
+        <Navbar onSearchOpen={() => setPaletteOpen(true)} />
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Experience />
+          <Contact />
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
 

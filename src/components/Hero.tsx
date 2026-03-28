@@ -58,7 +58,7 @@ const PerspectiveCard = ({ children, className, ...props }: any) => {
 
 export const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-32 pb-20 bg-background overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center pt-32 pb-20 bg-background dark:bg-background-dark overflow-hidden">
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-12 items-center">
         {/* Left Content */}
         <div className="z-10">
@@ -72,31 +72,34 @@ export const Hero = () => {
               <span className="text-[11px] font-bold text-accent uppercase tracking-[0.2em]">Available for work</span>
             </div>
 
-            <h1 className="text-[75px] md:text-[110px] font-black leading-[0.9] text-primary mb-10 tracking-[-0.04em]">
+            <h1 className="text-[75px] md:text-[110px] font-black leading-[0.9] text-primary dark:text-primary-dark mb-10 tracking-[-0.04em]">
               Hi, I'm <br />
               <span className="text-accent italic">Evan Lo,</span> <br />
               a CS student
             </h1>
 
-            <p className="text-lg md:text-xl text-textMuted mb-12 max-w-lg font-medium tracking-tight">
-              <span className="text-accent font-black">Robotics </span>Teacher and Researcher .
+            <p className="text-lg md:text-xl text-textMuted dark:text-textMuted-dark mb-12 max-w-lg font-medium tracking-tight">
+              <span className="text-accent font-black">Robotics </span>Researcher & Teacher,{" "}
+              <span className="text-accent font-black">Cybersecurity </span>Practitioner.
               <br />
-              <span className="text-sm font-normal opacity-60 mt-2 block">Building the future through intelligent software and resilient hardware.</span>
+              <span className="text-sm font-normal opacity-60 mt-2 block">
+                Lab researcher, penetration tester, hackathon enthusiast, and educator
+              </span>
             </p>
 
             <div className="flex flex-wrap gap-6 items-center">
-              <a href="#contact" className="px-10 py-5 rounded-full bg-primary text-white text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all duration-500 shadow-xl shadow-primary/10 hover:shadow-accent/20 hover:-translate-y-1">
+              <a href="#contact" className="px-10 py-5 rounded-full bg-primary dark:bg-primary-dark text-white text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all duration-500 shadow-xl shadow-primary/10 dark:shadow-primary-dark/10 hover:shadow-accent/20 hover:-translate-y-1">
                 Let's connect
               </a>
               <div className="flex items-center gap-6 ml-2">
-                <a href="/resume.pdf" download className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-textMuted hover:text-primary transition-colors">
+                <a href="/resume.pdf" download className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-textMuted dark:text-textMuted-dark hover:text-primary dark:hover:text-primary-dark transition-colors">
                   <FaDownload className="text-[10px]" /> Resume
                 </a>
-                <div className="w-px h-4 bg-black/10" />
-                <a href="https://github.com/evan-2005" target="_blank" rel="noreferrer" className="text-lg text-textMuted hover:text-primary transition-colors">
+                <div className="w-px h-4 bg-black/10 dark:bg-white/10" />
+                <a href="https://github.com/evan-2005" target="_blank" rel="noreferrer" className="text-lg text-textMuted dark:text-textMuted-dark hover:text-primary dark:hover:text-primary-dark transition-colors">
                   <FaGithub />
                 </a>
-                <a href="https://www.linkedin.com/in/evan-lo-jen-zhen" target="_blank" rel="noreferrer" className="text-lg text-textMuted hover:text-primary transition-colors">
+                <a href="https://www.linkedin.com/in/evan-lo-jen-zhen" target="_blank" rel="noreferrer" className="text-lg text-textMuted dark:text-textMuted-dark hover:text-primary dark:hover:text-primary-dark transition-colors">
                   <FaLinkedin />
                 </a>
               </div>

@@ -8,12 +8,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#FFFFFF',
-        surface: '#F5F5F3',
-        primary: '#111111',
+        background: {
+          DEFAULT: '#FFFFFF',
+          dark: '#0F0F0F'
+        },
+        surface: {
+          DEFAULT: '#F5F5F3',
+          dark: '#1A1A1A'
+        },
+        primary: {
+          DEFAULT: '#111111',
+          dark: '#FFFFFF'
+        },
         accent: '#3ABFB0',
-        textPrimary: '#111111',
-        textMuted: '#888888',
+        textPrimary: {
+          DEFAULT: '#111111',
+          dark: '#FFFFFF'
+        },
+        textMuted: {
+          DEFAULT: '#888888',
+          dark: '#AAAAAA'
+        },
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
