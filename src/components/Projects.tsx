@@ -93,23 +93,23 @@ export const Projects = () => {
 
 
   return (
-    <section id="projects" className="py-32 bg-surface/30">
+    <section id="projects" className="py-32 bg-surface/30 dark:bg-surface-dark/30">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-xl">
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-6 block">Selected Works</span>
-            <h2 className="text-5xl md:text-6xl font-black text-primary leading-tight tracking-tight">
+            <h2 className="text-5xl md:text-6xl font-black text-primary dark:text-primary-dark leading-tight tracking-tight">
               A collection of <br />
               <span className="text-accent italic">curated</span> projects.
             </h2>
           </div>
           
-          <div className="flex flex-wrap gap-6 text-[10px] font-black uppercase tracking-widest text-textMuted overflow-x-auto pb-4 no-scrollbar">
+          <div className="flex flex-wrap gap-6 text-[10px] font-black uppercase tracking-widest text-textMuted dark:text-textMuted-dark overflow-x-auto pb-4 no-scrollbar">
             {filters.map(f => (
               <button 
                 key={f}
                 onClick={() => setFilter(f)}
-                className={`transition-all duration-300 whitespace-nowrap ${filter === f ? 'text-accent border-b-2 border-accent pb-1' : 'hover:text-primary transition-colors'}`}
+                className={`transition-all duration-300 whitespace-nowrap ${filter === f ? 'text-accent border-b-2 border-accent pb-1' : 'hover:text-primary dark:hover:text-primary-dark transition-colors'}`}
               >
                 {f}
               </button>
@@ -120,7 +120,7 @@ export const Projects = () => {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[1, 2, 3, 4].map(i => (
-              <div key={i} className="aspect-[4/3] bg-white/50 animate-pulse rounded-[40px] border border-black/5"></div>
+              <div key={i} className="aspect-[4/3] bg-white/50 dark:bg-white/[0.04] animate-pulse rounded-[40px] border border-black/5 dark:border-white/10"></div>
             ))}
           </div>
         ) : (
@@ -136,10 +136,10 @@ export const Projects = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.6, delay: idx * 0.05 }}
-                  className="group bg-white rounded-[40px] p-10 border border-black/5 hover:border-accent/10 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] transition-all duration-700 overflow-hidden relative flex flex-col h-full cursor-pointer"
+                  className="group bg-white dark:bg-surface-dark rounded-[40px] p-10 border border-black/5 dark:border-white/10 hover:border-accent/10 dark:hover:border-accent/20 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] transition-all duration-700 overflow-hidden relative flex flex-col h-full cursor-pointer"
                 >
                   <div className="flex justify-between items-start mb-12">
-                    <div className="w-16 h-16 rounded-2xl bg-surface flex items-center justify-center text-2xl text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                    <div className="w-16 h-16 rounded-2xl bg-surface dark:bg-white/[0.06] flex items-center justify-center text-2xl text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
                       <FaCode />
                     </div>
                     {project.homepage && (
@@ -149,7 +149,7 @@ export const Projects = () => {
                           target="_blank" 
                           rel="noreferrer" 
                           onClick={(e) => e.stopPropagation()}
-                          className="w-10 h-10 rounded-full border border-black/5 flex items-center justify-center text-textMuted hover:bg-accent hover:text-white transition-all"
+                          className="w-10 h-10 rounded-full border border-black/5 dark:border-white/10 flex items-center justify-center text-textMuted dark:text-textMuted-dark hover:bg-accent hover:text-white transition-all"
                         >
                           <FaExternalLinkAlt className="text-sm" />
                         </a>
@@ -157,10 +157,10 @@ export const Projects = () => {
                     )}
                   </div>
 
-                  <h3 className="text-3xl font-black text-primary mb-4 group-hover:text-accent transition-colors">
+                  <h3 className="text-3xl font-black text-primary dark:text-primary-dark mb-4 group-hover:text-accent dark:group-hover:text-accent transition-colors">
                     {project.name.replace(/-/g, ' ')}
                   </h3>
-                  <p className="text-textMuted font-medium leading-relaxed mb-6 line-clamp-2 uppercase text-[11px] tracking-widest opacity-60">
+                  <p className="text-textMuted dark:text-textMuted-dark font-medium leading-relaxed mb-6 line-clamp-2 uppercase text-[11px] tracking-widest opacity-60">
                     {project.description || 'A unique technical solution developed to bridge complex systems and intelligent software.'}
                   </p>
 
@@ -169,14 +169,14 @@ export const Projects = () => {
                     <div className="w-8 h-[1px] bg-accent/30" />
                   </div>
 
-                  <div className="flex flex-wrap gap-2 pt-8 border-t border-black/[0.03] mt-auto">
+                  <div className="flex flex-wrap gap-2 pt-8 border-t border-black/[0.03] dark:border-white/[0.06] mt-auto">
                     {project.language && (
                       <span className="text-[9px] font-black uppercase text-accent tracking-widest px-4 py-2 bg-accent/5 rounded-full group-hover:bg-accent group-hover:text-white transition-all duration-500">
                         {project.language}
                       </span>
                     )}
                     {project.topics.slice(0, 3).map(tag => (
-                      <span key={tag} className="text-[9px] font-black uppercase text-textMuted tracking-widest px-4 py-2 bg-surface rounded-full group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                      <span key={tag} className="text-[9px] font-black uppercase text-textMuted dark:text-textMuted-dark tracking-widest px-4 py-2 bg-surface dark:bg-white/[0.06] rounded-full group-hover:bg-primary dark:group-hover:bg-primary-dark group-hover:text-white dark:group-hover:text-background-dark transition-all duration-500">
                         {tag}
                       </span>
                     ))}
@@ -188,13 +188,13 @@ export const Projects = () => {
         )}
 
         {filteredProjects.length === 0 && !loading && (
-          <div className="py-32 text-center text-textMuted font-bold text-xs tracking-widest uppercase opacity-40">
+          <div className="py-32 text-center text-textMuted dark:text-textMuted-dark font-bold text-xs tracking-widest uppercase opacity-40">
             No projects archived in '{filter}'
           </div>
         )}
 
         <div className="mt-20 text-center">
-          <a href="https://github.com/evan-2005" target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 px-12 py-6 rounded-full border border-black/5 font-black text-[11px] uppercase tracking-[0.2em] text-primary hover:bg-primary hover:text-white transition-all translate-y-0 hover:-translate-y-1 shadow-sm hover:shadow-xl">
+          <a href="https://github.com/evan-2005" target="_blank" rel="noreferrer" className="inline-flex items-center gap-4 px-12 py-6 rounded-full border border-black/5 dark:border-white/10 font-black text-[11px] uppercase tracking-[0.2em] text-primary dark:text-primary-dark hover:bg-primary dark:hover:bg-primary-dark hover:text-white dark:hover:text-background-dark transition-all translate-y-0 hover:-translate-y-1 shadow-sm hover:shadow-xl">
             Explore more on GitHub <FaGithub className="text-lg" />
           </a>
         </div>

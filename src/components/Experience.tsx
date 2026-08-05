@@ -89,17 +89,17 @@ export const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-32 bg-white">
+    <section id="experience" className="py-32 bg-background dark:bg-background-dark">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-20">
           {/* Section Heading Left */}
           <div>
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-accent mb-6 block">The Timeline</span>
-            <h2 className="text-5xl md:text-6xl font-black text-primary leading-[1.1] tracking-tight">
-              Wanna see my <br /> 
+            <h2 className="text-5xl md:text-6xl font-black text-primary dark:text-primary-dark leading-[1.1] tracking-tight">
+              Wanna see my <br />
               <span className="text-accent underline decoration-accent/20 underline-offset-8">experience?</span>
             </h2>
-            <p className="mt-12 text-lg text-textMuted font-medium max-w-sm">
+            <p className="mt-12 text-lg text-textMuted dark:text-textMuted-dark font-medium max-w-sm">
               Helping teams build better products through research and engineering.
             </p>
           </div>
@@ -119,32 +119,32 @@ export const Experience = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  className="group p-8 md:p-10 rounded-[40px] bg-surface hover:bg-white border border-transparent hover:border-black/5 hover:shadow-2xl transition-all duration-500"
+                  className="group p-8 md:p-10 rounded-[40px] bg-surface dark:bg-surface-dark hover:bg-white dark:hover:bg-background-dark border border-transparent hover:border-black/5 dark:hover:border-white/10 hover:shadow-2xl transition-all duration-500"
                 >
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                     <div>
                       <span className="text-[10px] font-black uppercase text-accent tracking-widest mb-2 block">
                         {exp.type === 'work' ? 'Professional' : 'Academic'}
                       </span>
-                      <h3 className="text-3xl font-black text-primary group-hover:text-accent transition-colors tracking-tight">{exp.title}</h3>
+                      <h3 className="text-3xl font-black text-primary dark:text-primary-dark group-hover:text-accent dark:group-hover:text-accent transition-colors tracking-tight">{exp.title}</h3>
                     </div>
-                    <div className="text-[11px] font-black uppercase text-primary/40 tracking-widest whitespace-nowrap bg-black/[0.03] px-6 py-3 rounded-full">
+                    <div className="text-[11px] font-black uppercase text-primary/40 dark:text-primary-dark/40 tracking-widest whitespace-nowrap bg-black/[0.03] dark:bg-white/[0.06] px-6 py-3 rounded-full">
                       {exp.date}
                     </div>
                   </div>
 
-                  <h4 className="text-lg font-bold text-textMuted mb-6">{exp.org}</h4>
+                  <h4 className="text-lg font-bold text-textMuted dark:text-textMuted-dark mb-6">{exp.org}</h4>
                   {exp.cgpa && (
                     <p className="text-accent font-black text-sm mb-6 tracking-widest inline-block px-3 py-1 bg-accent/5 rounded-lg">{exp.cgpa}</p>
                   )}
-                  <p className="text-base font-medium text-textMuted/80 leading-relaxed mb-8 max-w-2xl">
+                  <p className="text-base font-medium text-textMuted/80 dark:text-textMuted-dark/80 leading-relaxed mb-8 max-w-2xl">
                     {exp.desc}
                   </p>
 
                   {exp.tags && (
                     <div className="flex flex-wrap gap-3">
                       {exp.tags.slice(0, 7).map(tag => (
-                        <span key={tag} className="text-[10px] font-black uppercase text-textMuted leading-none tracking-widest px-4 py-3 bg-white/50 rounded-xl group-hover:bg-accent/10 group-hover:text-accent transition-colors">
+                        <span key={tag} className="text-[10px] font-black uppercase text-textMuted dark:text-textMuted-dark leading-none tracking-widest px-4 py-3 bg-white/50 dark:bg-white/[0.06] rounded-xl group-hover:bg-accent/10 dark:group-hover:bg-accent/10 group-hover:text-accent dark:group-hover:text-accent transition-colors">
                           {tag}
                         </span>
                       ))}

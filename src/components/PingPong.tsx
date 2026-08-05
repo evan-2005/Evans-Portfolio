@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTheme } from '../contexts/ThemeContext';
 
 export const PingPong = () => {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [gameState, setGameState] = useState<'idle' | 'playing' | 'paused' | 'gameOver'>('idle');
   const [score, setScore] = useState({ player: 0, ai: 0 });
@@ -103,11 +106,11 @@ export const PingPong = () => {
       ctx.beginPath();
       ctx.moveTo(width / 2, 0);
       ctx.lineTo(width / 2, height);
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.05)';
       ctx.stroke();
       ctx.setLineDash([]);
 
-      ctx.fillStyle = '#111111';
+      ctx.fillStyle = isDark ? '#FFFFFF' : '#111111';
       ctx.beginPath();
       ctx.roundRect(0, playerY, paddleWidth, paddleHeight, 5);
       ctx.fill();
@@ -136,7 +139,7 @@ export const PingPong = () => {
       cancelAnimationFrame(animationFrameId);
       canvas.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [gameState, score]);
+  }, [gameState, score, isDark]);
 
   const resetGame = () => {
     setScore({ player: 0, ai: 0 });
@@ -151,42 +154,42 @@ export const PingPong = () => {
       onMouseLeave={() => {
         if (gameState === 'playing') setGameState('paused');
       }}
-      className="relative group w-full h-full bg-surface border border-black/5 rounded-[40px] shadow-2xl overflow-hidden flex flex-col items-center justify-center cursor-none"
+      className="relative group w-full h-full bg-surface dark:bg-surface-dark border border-black/5 dark:border-white/10 rounded-[40px] shadow-2xl overflow-hidden flex flex-col items-center justify-center cursor-none"
     >
       {(gameState === 'idle' || gameState === 'paused' || gameState === 'gameOver') && (
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-md z-20 flex flex-col items-center justify-center p-8 text-center">
+        <div className="absolute inset-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md z-20 flex flex-col items-center justify-center p-8 text-center">
           {gameState === 'gameOver' ? (
             <>
-              <h3 className="text-4xl font-black text-primary mb-2">
+              <h3 className="text-4xl font-black text-primary dark:text-primary-dark mb-2">
                 {winner === 'player' ? 'YOU WIN!' : 'GAME OVER'}
               </h3>
-              <p className="text-[10px] uppercase font-black tracking-widest text-textMuted mb-8 opacity-60">Final Score: {score.player} - {score.ai}</p>
+              <p className="text-[10px] uppercase font-black tracking-widest text-textMuted dark:text-textMuted-dark mb-8 opacity-60">Final Score: {score.player} - {score.ai}</p>
               <button
                 onClick={resetGame}
-                className="px-8 py-4 bg-primary text-white rounded-full text-xs font-black uppercase tracking-widest hover:bg-accent transition-all duration-300"
+                className="px-8 py-4 bg-primary dark:bg-primary-dark text-white dark:text-background-dark rounded-full text-xs font-black uppercase tracking-widest hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white transition-all duration-300"
               >
                 Play Again
               </button>
             </>
           ) : (
             <>
-              <h3 className="text-4xl font-black text-primary mb-2">
+              <h3 className="text-4xl font-black text-primary dark:text-primary-dark mb-2">
                 {gameState === 'idle' ? 'Ping Pong' : 'Game Paused'}
               </h3>
-              <p className="text-[10px] uppercase font-black tracking-widest text-textMuted mb-8 opacity-60">
+              <p className="text-[10px] uppercase font-black tracking-widest text-textMuted dark:text-textMuted-dark mb-8 opacity-60">
                 {gameState === 'idle' ? 'Try This' : 'Hover back to resume'}
               </p>
               <div className="flex gap-4">
                 <button
                   onClick={() => setGameState('playing')}
-                  className="px-8 py-4 bg-primary text-white rounded-full text-xs font-black uppercase tracking-widest hover:bg-accent transition-all duration-300"
+                  className="px-8 py-4 bg-primary dark:bg-primary-dark text-white dark:text-background-dark rounded-full text-xs font-black uppercase tracking-widest hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white transition-all duration-300"
                 >
                   {gameState === 'idle' ? 'Start Game' : 'Resume'}
                 </button>
                 {gameState === 'paused' && (
                   <button
                     onClick={resetGame}
-                    className="px-8 py-4 border border-black/10 text-primary rounded-full text-xs font-black uppercase tracking-widest hover:bg-surface transition-all duration-300"
+                    className="px-8 py-4 border border-black/10 dark:border-white/20 text-primary dark:text-primary-dark rounded-full text-xs font-black uppercase tracking-widest hover:bg-surface dark:hover:bg-white/[0.06] transition-all duration-300"
                   >
                     Restart
                   </button>
@@ -198,12 +201,12 @@ export const PingPong = () => {
       )}
 
       <div className="w-full h-full relative">
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 flex gap-12 text-6xl font-black text-primary/10 select-none">
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 flex gap-12 text-6xl font-black text-primary/10 dark:text-primary-dark/10 select-none">
           <span>{score.player}</span>
           <span>{score.ai}</span>
         </div>
         <canvas ref={canvasRef} className="w-full h-full object-contain" />
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[9px] font-black uppercase tracking-widest text-textMuted/40">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[9px] font-black uppercase tracking-widest text-textMuted/40 dark:text-textMuted-dark/40">
           Slide to move paddle • First to 5 wins
         </div>
       </div>

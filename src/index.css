@@ -8,17 +8,17 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply font-sans bg-background text-textPrimary antialiased overflow-x-hidden relative;
+    @apply font-sans bg-background dark:bg-background-dark text-textPrimary dark:text-textPrimary-dark antialiased overflow-x-hidden relative transition-colors duration-300;
   }
 
   ::selection {
-    @apply bg-accent/20 text-textPrimary;
+    @apply bg-accent/20 text-textPrimary dark:text-textPrimary-dark;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-textPrimary tracking-tight;
+    @apply font-heading text-textPrimary dark:text-textPrimary-dark tracking-tight;
   }
 }
 
@@ -41,4 +41,11 @@
 }
 ::-webkit-scrollbar-thumb {
   @apply bg-surface rounded-full border border-background hover:bg-slate-700 transition-colors;
+}
+
+.dark ::-webkit-scrollbar-track {
+  @apply bg-background-dark;
+}
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-surface-dark border-background-dark hover:bg-slate-600;
 }

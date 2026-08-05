@@ -88,7 +88,7 @@ export const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-6 items-center">
-              <a href="#contact" className="px-10 py-5 rounded-full bg-primary dark:bg-primary-dark text-white text-xs font-bold uppercase tracking-widest hover:bg-accent transition-all duration-500 shadow-xl shadow-primary/10 dark:shadow-primary-dark/10 hover:shadow-accent/20 hover:-translate-y-1">
+              <a href="#contact" className="px-10 py-5 rounded-full bg-primary dark:bg-primary-dark text-white dark:text-background-dark text-xs font-bold uppercase tracking-widest hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white transition-all duration-500 shadow-xl shadow-primary/10 dark:shadow-primary-dark/10 hover:shadow-accent/20 hover:-translate-y-1">
                 Let's connect
               </a>
               <div className="flex items-center gap-6 ml-2">

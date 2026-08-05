@@ -44,7 +44,7 @@ export const Navbar = ({ onSearchOpen }: NavbarProps) => {
             <FaSearch className="text-[10px]" />
             <span className="text-[11px] font-bold tracking-widest uppercase">Search</span>
           </button>
-          <a href="#contact" className="px-6 py-2.5 rounded-full bg-primary dark:bg-primary-dark text-white text-[11px] font-bold tracking-widest uppercase hover:bg-accent transition-all duration-300">
+          <a href="#contact" className="px-6 py-2.5 rounded-full bg-primary dark:bg-primary-dark text-white dark:text-background-dark text-[11px] font-bold tracking-widest uppercase hover:bg-accent dark:hover:bg-accent hover:text-white dark:hover:text-white transition-all duration-300">
             Let's Talk
           </a>
         </div>
