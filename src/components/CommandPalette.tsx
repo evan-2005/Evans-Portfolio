@@ -78,7 +78,7 @@ export const CommandPalette = ({ open, setOpen }: CommandPaletteProps) => {
             </Command.Group>
 
             <Command.Group heading="Resources" className="text-[10px] text-textMuted/40 font-black px-4 py-3 uppercase tracking-widest mb-2 mt-4">
-              <Command.Item onSelect={() => { setOpen(false); window.open('/resume.pdf'); }} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
+              <Command.Item onSelect={() => { setOpen(false); window.open(`${import.meta.env.BASE_URL}resume.pdf`); }} className="flex items-center gap-4 px-4 py-4 text-xs font-bold text-primary rounded-2xl cursor-pointer hover:bg-surface transition-all mb-1 aria-selected:bg-surface group">
                 <div className="w-8 h-8 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all"><FaDownload /></div> Download CV
               </Command.Item>
             </Command.Group>

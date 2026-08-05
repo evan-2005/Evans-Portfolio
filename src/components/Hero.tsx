@@ -92,7 +92,7 @@ export const Hero = () => {
                 Let's connect
               </a>
               <div className="flex items-center gap-6 ml-2">
-                <a href="/resume.pdf" download className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-textMuted dark:text-textMuted-dark hover:text-primary dark:hover:text-primary-dark transition-colors">
+                <a href={`${import.meta.env.BASE_URL}resume.pdf`} download="Evan-Lo-Jen-Zhen-Resume.pdf" className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-textMuted dark:text-textMuted-dark hover:text-primary dark:hover:text-primary-dark transition-colors">
                   <FaDownload className="text-[10px]" /> Resume
                 </a>
                 <div className="w-px h-4 bg-black/10 dark:bg-white/10" />
