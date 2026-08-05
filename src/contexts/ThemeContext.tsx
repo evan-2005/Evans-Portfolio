@@ -9,6 +9,9 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+/** Fallback delay for re-enabling transitions when rAF is unavailable. */
+const TRANSITION_UNLOCK_MS = 120;
+
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (context === undefined) {
@@ -43,11 +46,16 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     root.classList.add(theme);
     localStorage.setItem('theme', theme);
 
-    const frame = window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => root.classList.remove('theme-switching'));
-    });
+    // rAF never fires in a hidden or throttled tab, which would leave
+    // transitions disabled for good, so a timer backs it up.
+    const clear = () => root.classList.remove('theme-switching');
+    const frame = window.requestAnimationFrame(() => window.requestAnimationFrame(clear));
+    const timer = window.setTimeout(clear, TRANSITION_UNLOCK_MS);
 
-    return () => window.cancelAnimationFrame(frame);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+    };
   }, [theme]);
 
   const toggleTheme = () => {
