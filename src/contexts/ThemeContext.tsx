@@ -33,9 +33,21 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     const root = window.document.documentElement;
+
+    // Suppress transitions for the frame the theme class changes on. An
+    // in-flight colour transition otherwise holds the previous palette once
+    // its dark: rule stops matching, leaving text the same colour as its
+    // background until the next reload.
+    root.classList.add('theme-switching');
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
     localStorage.setItem('theme', theme);
+
+    const frame = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => root.classList.remove('theme-switching'));
+    });
+
+    return () => window.cancelAnimationFrame(frame);
   }, [theme]);
 
   const toggleTheme = () => {

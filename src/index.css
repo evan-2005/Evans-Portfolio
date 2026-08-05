@@ -9,6 +9,16 @@
     scroll-behavior: smooth;
   }
 
+  /* Applied by ThemeContext for one frame while the theme class is swapped.
+     Without it, elements mid-transition keep the old palette's colour after
+     the dark: rule stops matching, which left white-on-white text. */
+  .theme-switching,
+  .theme-switching *,
+  .theme-switching *::before,
+  .theme-switching *::after {
+    transition: none !important;
+  }
+
   body {
     /* No transition here: the body background is propagated to the viewport
        canvas, and animating it stops Chromium from picking up the .dark
