@@ -10,7 +10,10 @@
   }
 
   body {
-    @apply font-sans bg-background dark:bg-background-dark text-textPrimary dark:text-textPrimary-dark antialiased overflow-x-hidden relative transition-colors duration-300;
+    /* No transition here: the body background is propagated to the viewport
+       canvas, and animating it stops Chromium from picking up the .dark
+       class change on <html> until the next reload. */
+    @apply font-sans bg-background dark:bg-background-dark text-textPrimary dark:text-textPrimary-dark antialiased overflow-x-hidden relative;
   }
 
   ::selection {
