@@ -27,7 +27,7 @@ export const Contact = () => {
             evan.lojenzhen@gmail.com
           </a>
 
-          <div className="flex flex-col md:flex-row justify-between items-center gap-12 pt-24 border-t border-black/5">
+          <div className="flex justify-center pt-24 border-t border-black/5">
             <div className="flex gap-10 text-xl text-textMuted">
               <a href="https://github.com/evan-2005" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors flex items-center gap-2">
                 <FaGithub /> <span className="text-[10px] font-black uppercase tracking-widest">GitHub</span>
@@ -36,10 +36,6 @@ export const Contact = () => {
                 <FaLinkedin /> <span className="text-[10px] font-black uppercase tracking-widest">LinkedIn</span>
               </a>
             </div>
-
-            <p className="text-[10px] font-bold text-textMuted uppercase tracking-[0.3em]">
-              {new Date().getFullYear()} — EVAN LO • MADE WITH PRECISION
-            </p>
           </div>
         </motion.div>
       </div>
