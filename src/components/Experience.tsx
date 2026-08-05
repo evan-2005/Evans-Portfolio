@@ -41,7 +41,7 @@ export const Experience = () => {
       org: 'Sunway University & Lancaster University',
       date: '2025 - 2027',
       desc: 'Exploring advanced software development, AI, and system architecture.',
-      cgpa: 'CGPA: 3.80',
+      cgpa: 'CGPA: 3.81',
       tags: ['Business Analysis', 'OOP', 'Digital Image Processing', 'Algorithm Analysis', 'Scala', 'IoT Security', 'Startup Foundry', 'Data Science'],
       icon: <FaGraduationCap />
     },
